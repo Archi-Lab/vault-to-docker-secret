@@ -1,0 +1,40 @@
+const argv = require("yargs")
+  .option("approle-file", {
+    alias: "a",
+    demandOption: true,
+    description: "AppRole credentials file",
+    requiresArg: true,
+    type: "string"
+  })
+  .option("vault-endpoint", {
+    alias: "v",
+    demandOption: true,
+    description: "Vault endpoint URL",
+    requiresArg: true,
+    type: "string"
+  })
+  .option("secret-path", {
+    alias: "s",
+    demandOption: true,
+    description: "Vault secret path",
+    requiresArg: true,
+    type: "string"
+  })
+  .option("secret-key", {
+    alias: "k",
+    demandOption: true,
+    description: "Vault secret key",
+    requiresArg: true,
+    type: "string"
+  })
+  .usage(
+    "$0 --approle-file=FILE --vault-endpoint=ENDPOINT --secret-path=PATH  --secret-key=KEY"
+  )
+  .help().argv;
+
+require(".")(
+  argv.approleFile,
+  argv.vaultEndpoint,
+  argv.secretPath,
+  argv.secretKey
+);
