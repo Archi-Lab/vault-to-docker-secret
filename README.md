@@ -1,12 +1,10 @@
 # vault-to-docker-secret
 
-## Build
+## Installation
 
-In order to build the platform binaries run:
-
-```
-npx pkg -t latest-linux,latest-win,latest-mac .
-```
+Download a
+[release](https://github.com/Archi-Lab/vault-to-docker-secret/releases) for your
+platform and you are ready to go.
 
 ## Create secret
 
@@ -22,4 +20,12 @@ Usage instructions:
 
 ```
 vault-to-docker-secret --help
+```
+
+## Build
+
+In order to build the platform binaries run:
+
+```
+npx pkg -t latest-linux,latest-win,latest-mac .
 ```
