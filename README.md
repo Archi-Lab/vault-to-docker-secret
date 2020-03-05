@@ -1,5 +1,8 @@
 # vault-to-docker-secret
 
+Allows to read secrets from [HashiCorp Vault](https://www.vaultproject.io/) and
+store them as [Docker secrets](https://docs.docker.com/engine/swarm/secrets/).
+
 ## Installation
 
 Download a
@@ -11,7 +14,7 @@ platform and you are ready to go.
 Reads a secret from Vault and stores it as a Docker secret:
 
 ```
-vault-to-docker-secret --approle-file=FILE --vault-endpoint=ENDPOINT --secret-path=PATH --secret-key=KEY
+vault-to-docker-secret --approle-file=FILE --vault-endpoint=ENDPOINT --vault-path=PATH  --vault-key=KEY --secret-name=NAME
 ```
 
 ## Help
