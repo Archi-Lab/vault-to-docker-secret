@@ -1,4 +1,4 @@
-const DOCKER = new require("dockerode")();
+const DOCKER = new require('dockerode')();
 let vault;
 
 module.exports = async (
@@ -9,9 +9,9 @@ module.exports = async (
   secretName
 ) => {
   const OPTIONS = { endpoint: vaultEndpoint };
-  vault = require("node-vault")(OPTIONS);
+  vault = require('node-vault')(OPTIONS);
   try {
-    const jsonString = await require("fs").promises.readFile(approleFile);
+    const jsonString = await require('fs').promises.readFile(approleFile);
     const approleJson = JSON.parse(jsonString);
     const loginResponse = await vaultApproleLogin(approleJson);
     const vaultSecret = await readVaultSecret(vaultPath, loginResponse);
@@ -23,8 +23,8 @@ module.exports = async (
 
 async function vaultApproleLogin(approleJson) {
   const APPROLE = {
-    role_id: approleJson.roleId,
-    secret_id: approleJson.secretId
+    role_id: approleJson.role_id,
+    secret_id: approleJson.secret_id,
   };
   return vault.approleLogin(APPROLE);
 }
@@ -35,10 +35,10 @@ async function readVaultSecret(vaultPath, loginResponse) {
 }
 
 async function createDockerSecretFromValue(vaultKey, vaultSecret, secretName) {
-  const VALUE = Buffer.from(vaultSecret.data.data[vaultKey]).toString("base64");
+  const VALUE = Buffer.from(vaultSecret.data.data[vaultKey]).toString('base64');
   const DOCKER_SECRET = {
     name: secretName,
-    data: VALUE
+    data: VALUE,
   };
   return DOCKER.createSecret(DOCKER_SECRET);
 }
